@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const aboutImgs = document.querySelectorAll('.about-img-main img, .about-img-secondary img');
   let aboutIdx = 0;
   const aboutSources = [
-    'https://media.base44.com/images/public/6acda335a081304ef295cb94/2f6ea5a99_03_about_us.jpg',
-    'https://media.base44.com/images/public/6acda335a081304ef295cb94/52b4219db_02_header_hero.jpg'
+    'https://media.base44.com/images/public/6acda335a081304ef295cb94/c1dd21c51_03_about_us.jpg',
+    'https://media.base44.com/images/public/6acda335a081304ef295cb94/852d67f3f_02_header_hero.jpg'
   ];
   const nextImgBtn = document.querySelector('.img-next-btn');
   if (nextImgBtn) {
