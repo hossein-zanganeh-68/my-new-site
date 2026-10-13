@@ -80,10 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const aboutImgs = document.querySelectorAll('.about-img-main img, .about-img-secondary img');
   let aboutIdx = 0;
   const aboutSources = [
-    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
-    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
-    'https://images.unsplash.com/photo-1600566753190-17f0baa2c644?w=800&q=80',
-    'https://images.unsplash.com/photo-1600210492486-724fe8c67138?w=800&q=80'
+    'https://media.base44.com/images/public/6acda335a081304ef295cb94/2f6ea5a99_03_about_us.jpg',
+    'https://media.base44.com/images/public/6acda335a081304ef295cb94/52b4219db_02_header_hero.jpg'
   ];
   const nextImgBtn = document.querySelector('.img-next-btn');
   if (nextImgBtn) {
