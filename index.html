@@ -54,20 +54,35 @@
     </nav>
   </header>
 
-  <!-- ============ HERO ============ -->
-  <section id="home" class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">Discover Exceptional Homes & Investments</h1>
-      <p class="hero-subtitle">Premium properties in prime locations. Find your dream home or the perfect investment with confidence.</p>
-      <div class="hero-actions">
-        <a href="#properties" class="btn btn-gold">View Properties <span class="arrow">→</span></a>
-        <a href="#contact" class="btn btn-outline-light">Contact Us</a>
+  <!-- ============ HERO — SCROLL-DRIVEN VIDEO ============ -->
+  <section id="home" class="hero-scroll-section">
+    <div class="hero-sticky">
+      <!-- Fallback background image (visible if video fails or reduced-motion) -->
+      <div class="hero-fallback"></div>
+      <!-- Scroll-driven video: paused at all times, scrubbed via currentTime -->
+      <video class="hero-video" id="heroVideo" preload="auto" playsinline muted>
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
+      <!-- Subtle gradient overlay for text readability -->
+      <div class="hero-overlay"></div>
+      <!-- Minimal loading indicator -->
+      <div class="hero-loading" id="heroLoading">
+        <div class="hero-loader"></div>
       </div>
-    </div>
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
+      <!-- Hero content (fades out as user scrolls) -->
+      <div class="hero-content" id="heroContent">
+        <h1 class="hero-title">Discover Exceptional Homes & Investments</h1>
+        <p class="hero-subtitle">Premium properties in prime locations. Find your dream home or the perfect investment with confidence.</p>
+        <div class="hero-actions">
+          <a href="#properties" class="btn btn-gold">View Properties <span class="arrow">→</span></a>
+          <a href="#contact" class="btn btn-outline-light">Contact Us</a>
+        </div>
+      </div>
+      <!-- Scroll indicator -->
+      <div class="hero-scroll" id="heroScrollIndicator">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
     </div>
   </section>
 
@@ -341,6 +356,7 @@
     </div>
   </footer>
 
+  <script src="js/scroll-video.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

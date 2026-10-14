@@ -222,26 +222,84 @@ ul { list-style: none; }
   padding: 16px 0 0;
 }
 
-/* ============ HERO ============ */
-.hero {
+/* ============ HERO — SCROLL-DRIVEN VIDEO ============ */
+.hero-scroll-section {
   position: relative;
-  min-height: 100vh;
+  height: 300vh; /* scroll distance — 3x viewport for cinematic pacing */
+}
+.hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+/* Fallback background (always behind video; visible if video fails / reduced-motion) */
+.hero-fallback {
+  position: absolute;
+  inset: 0;
   background: url('https://media.base44.com/images/public/6acda335a081304ef295cb94/97cc2d380_b6818591-2490-404c-898d-75fb4826df88.png') center / cover no-repeat;
-  background-attachment: fixed;
+  z-index: 0;
+}
+/* Video: covers viewport, hidden until ready */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.hero-video.ready {
+  opacity: 1;
+}
+/* When video fails, keep the fallback visible */
+.hero-scroll-section.video-failed .hero-fallback {
+  z-index: 1;
 }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10,37,64,0.55) 0%, rgba(10,37,64,0.35) 40%, rgba(10,37,64,0.65) 100%);
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(10,37,64,0.45) 0%, rgba(10,37,64,0.25) 40%, rgba(10,37,64,0.55) 100%);
+  pointer-events: none;
+}
+/* Minimal loading indicator */
+.hero-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  transition: opacity 0.6s ease;
+}
+.hero-loading.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.hero-loader {
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(255,255,255,0.15);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: heroSpin 0.9s linear infinite;
+}
+@keyframes heroSpin {
+  to { transform: rotate(360deg); }
 }
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   max-width: 820px;
   padding: 0 32px;
   animation: fadeInUp 1s ease;
@@ -269,7 +327,7 @@ ul { list-style: none; }
   bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -677,5 +735,4 @@ ul { list-style: none; }
   .hero-title { font-size: 1.7rem; }
   .section-heading { font-size: 1.45rem; }
   .logo-text { font-size: 0.92rem; }
-  .hero { background-attachment: scroll; }
 }
